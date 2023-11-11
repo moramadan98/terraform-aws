@@ -6,8 +6,6 @@ resource "aws_route_table" "route-table-1" {
     gateway_id = aws_internet_gateway.gw-01.id
   }
 
-  
-
   tags = {
     Name = "route-table-1"
   }

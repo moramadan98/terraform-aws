@@ -21,7 +21,7 @@ resource "aws_instance" "Application_instance" {
   ami             = data.aws_ami.ubuntu.id
   instance_type   = "t3.micro"
   vpc_security_group_ids = [ aws_security_group.allow_ssh_3000.id ]
-  subnet_id       = aws_subnet.subnet-2.id
+  subnet_id       = module.network.subnet-2-id
 
   tags = {
     Name = "Application_instance"
@@ -38,7 +38,7 @@ resource "aws_instance" "bastion" {
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = "t3.micro"
   vpc_security_group_ids = [ aws_security_group.allow_ssh.id ]
-  subnet_id                   = aws_subnet.subnet-1.id
+  subnet_id                   = module.network.subnet-1-id
   associate_public_ip_address = "true"
 
   tags = {
